@@ -31,3 +31,28 @@ class Professor(Student):
         with open('lesson_info.csv', 'r') as f:
             mytable = from_csv(f)
         print(mytable.get_string(fields=["lesson_name", "units"]))
+
+
+    def students_list_chosen_lesson(self, code_lesson):
+        """"
+        check which students have chosen the same lesson 
+        param : code_lesson
+        inner func : first check if this lesson code is available
+        print students' names
+        """  
+        def check_code(code_lesson):
+            read = HandleFile('lesson_info.csv').read_file()
+            for row in read:
+                if row['code_lesson'] == code_lesson:
+                    return True 
+        if check_code(code_lesson):     
+            read_file = HandleFile("chosen_lesson.csv").read_file()
+            list_students_having_same_lesson = [row['student_name'] for row in read_file 
+                                                if code_lesson in ast.literal_eval(row['code_lesson'])]
+            print("  student name  ")
+            print('*' * 18)
+            for i in list_students_having_same_lesson:
+                print(i)
+        else :
+            logging.warning('lesson code is not available!')
+            print('This lesson code is not available!')
