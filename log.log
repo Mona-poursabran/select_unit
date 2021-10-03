@@ -1,0 +1,59 @@
+ 2021-09-29 16:11:04,543 : LogIn: ERROR: Username or Password is not found!
+ 2021-09-29 16:11:17,865 : Entrence: ERROR: Invalid choice
+Traceback (most recent call last):
+  File "f:\Python Sharif\6 months learning python\clone\main.py", line 71, in <module>
+    choice = int(input("choose a number to access to each part: "))
+ValueError: invalid literal for int() with base 10: 'ggg'
+ 2021-09-29 17:41:01,007 : search student: ERROR: This student is not found!
+ 2021-09-29 18:26:09,186 : ERROR: Username or Password is not found!
+ 2021-09-29 18:28:14,737 : ERROR: Invalid choice
+Traceback (most recent call last):
+  File "f:\Python Sharif\6 months learning python\clone\main.py", line 104, in <module>
+    student.show_total_units()
+NameError: name 'student' is not defined
+ 2021-09-29 18:32:29,894 : WARNING: lesson code is not available!
+ 2021-10-02 16:24:07,126 : ERROR: Username or Password is not found!
+ 2021-10-02 16:25:09,759 : ERROR: Invalid choice
+Traceback (most recent call last):
+  File "f:\Python Sharif\6 months learning python\HW_9\update_project\main.py", line 18, in <module>
+    num =int(input("Choose: "))
+ValueError: invalid literal for int() with base 10: 'mona'
+ 2021-10-02 17:29:15,162 : ERROR: Username or Password is not found!
+ 2021-10-02 17:29:27,919 : ERROR: Username or Password is not found!
+ 2021-10-02 17:29:42,800 : ERROR: Username or Password is not found!
+ 2021-10-02 17:55:36,425 : ERROR: Invalid choice
+Traceback (most recent call last):
+  File "f:\Python Sharif\6 months learning python\HW_9\update_project\main.py", line 88, in <module>
+    student.chosen_lesson(code_lesson)
+  File "f:\Python Sharif\6 months learning python\HW_9\update_project\student.py", line 77, in chosen_lesson
+    'units':self.total_units,'id':[row['userid']for row in read_user_info if row['lname']==self.lname],'code_lesson':[dic['code_lesson'] for dic in self.chosen_lessons]}
+TypeError: 'method' object is not iterable
+ 2021-10-03 09:02:17,550 : ERROR: You have faced an error!
+Missign argument or Invalid input
+ 2021-10-03 09:05:41,496 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:06:29,162 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:07:02,240 : Add new lesson: ERROR: You have faced an error!
+Missign argument or Invalid input
+ 2021-10-03 09:08:05,859 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:08:30,818 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:08:56,909 : Add new lesson: ERROR: You have faced an error!
+Missign argument or Invalid input
+ 2021-10-03 09:09:33,160 : Add new lesson: ERROR: You have faced an error!
+Missign argument or Invalid input
+ 2021-10-03 09:11:33,986 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:13:08,087 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:13:31,872 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:14:33,024 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 09:15:12,548 : Search the lesson: WARNING: This lesson is not found!
+ 2021-10-03 09:15:29,508 : Search the lesson: WARNING: This lesson is not found!
+ 2021-10-03 09:27:33,696 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 10:24:06,803 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 10:25:30,768 : Add new lesson: ERROR: Using repeated lesson code
+ 2021-10-03 10:25:43,849 : LogIn: ERROR: Username or Password is not found!
+ 2021-10-03 10:25:45,522 : Entrence: ERROR: Invalid choice
+Traceback (most recent call last):
+  File "f:\Python Sharif\6 months learning python\HW_9\update_project\main.py", line 18, in <module>
+    num =int(input("Choose: "))
+ValueError: invalid literal for int() with base 10: ''
+ 2021-10-03 10:25:57,676 : LogIn: ERROR: Username or Password is not found!
+ 2021-10-03 10:27:17,935 : Add new lesson: ERROR: Using repeated lesson code
