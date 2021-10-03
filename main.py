@@ -1,6 +1,6 @@
 from student import Student
 from education_admin import EducationAdmin
-from professor import Professor
+# from professor import Professor
 from user import User
 from menus import *
 from useraccount import *
@@ -44,11 +44,11 @@ while num != 3 :
                     edu_admin = EducationAdmin(user_type, username, password, fname, lname)
                     edu_admin.confirmation(confirm)
                     edu_admin.register()
-                elif user_type == 3 :
-                    user_type = 'professor'
-                    Pro = Professor(user_type, username, password, fname, lname)
-                    Pro.confirmation(confirm)
-                    Pro.register()
+                # elif user_type == 3 :
+                #     user_type = 'professor'
+                #     Pro = Professor(user_type, username, password, fname, lname)
+                #     Pro.confirmation(confirm)
+                #     Pro.register()
 
             except Exception as e :
                 print("Entrence is not valid try again")
@@ -81,14 +81,14 @@ while num != 3 :
                     elif choice == 3:
                         student.show_total_units()
 
-                    elif choice == 4:
-                        student.see_all_lessons()
-                        while student.total_units < 10:
-                            code_lesson = input("code: ")
-                            student.chosen_lesson(code_lesson)
-                        student.save_chosen_lesson()
-                    elif choice == 5 :
-                        student.show_chosen_lesson_file()     
+                    # elif choice == 4:
+                    #     student.see_all_lessons()
+                    #     while student.total_units < 10:
+                    #         code_lesson = input("code: ")
+                    #         student.chosen_lesson(code_lesson)
+                    #     student.save_chosen_lesson()
+                    # elif choice == 5 :
+                    #     student.show_chosen_lesson_file()     
                     access_student()
                     choice = int(input("choose a number to access to each part: ")) 
                     # os.system('cls') 
@@ -119,48 +119,23 @@ while num != 3 :
                         remain_cap = input("Remaining capacity: ").strip()
                         code_lesson = input('code lesson: ').strip()
                         edu_admin.add_new_lesson(lesson_name,units, capacity, remain_cap, code_lesson, professor)
-                    elif choice == 5:
-                        lesson = input("lesson: ").title().strip()
-                        edu_admin.choose_lesson_to_see_student_list(lesson)
-                    elif choice == 6 :
-                        edu_admin.list_students()
-                    elif choice == 7 :
-                        firsname = input("student name: ").title().strip()
-                        studentid =  input("student id: ").strip()
-                        edu_admin.search_students(firsname, studentid)
-                    elif choice == 8 :
-                        studentid = input('studentID: ')
-                        edu_admin.choose_student_and_see_chosen_lessons(studentid)
+                    # elif choice == 5:
+                    #     lesson = input("lesson: ").title().strip()
+                    #     edu_admin.choose_lesson_to_see_student_list(lesson)
+                    # elif choice == 6 :
+                    #     edu_admin.list_students()
+                    # elif choice == 7 :
+                    #     firsname = input("student name: ").title().strip()
+                    #     studentid =  input("student id: ").strip()
+                    #     edu_admin.search_students(firsname, studentid)
+                    # elif choice == 8 :
+                    #     studentid = input('studentID: ')
+                    #     edu_admin.choose_student_and_see_chosen_lessons(studentid)
                     access_edu_admin()
                     choice = int(input("choose a number to access to each part: ")) 
                     # os.system('cls') 
                 user.log_out()
 
-            elif user.role == 'professor' :
-                pro = Professor(user.role, username, password, user.fname, user.lname)
-                access_pro()
-                choice = int(input("Choose a number to access to each part: "))
-                while choice != 6 :
-                    if choice == 1 :
-                        pro.see_all_lesson()
-                    elif choice == 2:
-                        lesson = input("Which lesson are you looking for? ").title().strip()
-                        pro.search_lesson(lesson)
-                    elif choice == 3:
-                        pro.see_all_lessons()
-                        while pro.total_units < 5 :
-                            code = input("Code lesson: ").strip()
-                            pro.chosen_course(code)
-                        pro.save_chosen_course()
-                    elif choice == 4 :
-                        pro.show_chosen_course()
-                    elif choice == 5 :
-                        code_lesson = input("Enter lesson's code: ").strip()
-                        pro.students_list_chosen_lesson(code_lesson)
-                    access_pro()
-                    choice = int(input("Choose a number to access to each part: "))
-                    os.system('cls') 
-                user.log_out()
 
         
 
