@@ -56,3 +56,25 @@ class Professor(Student):
         else :
             logging.warning('lesson code is not available!')
             print('This lesson code is not available!')
+
+
+    def chosen_course(self, code_lesson):
+        def check(code_lesson):
+            read = HandleFile('lesson_info.csv').read_file()
+            for row in read:
+                if row['code_lesson'] == code_lesson and row['Professor'] == "":
+                    return True 
+
+        if check(code_lesson) :
+            read_file = HandleFile('lesson_info.csv')
+            read = read_file.read_file()
+            for row in read :
+                if row['code_lesson'] == code_lesson:
+                    self.total_units += int(row['units'])
+                    row['Professor'] = self.lname
+                    self.chosen_courses.append(row)
+        
+            read_file.write_info(read) 
+            return self.chosen_courses             
+        else :
+            print('Perhapse this lesson code is not available\nor has been chosen by another professor')
