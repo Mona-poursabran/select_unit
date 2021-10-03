@@ -52,3 +52,27 @@ class EducationAdmin(Student):
         else :
             logger.error("You have faced an error!\nMissign argument or Invalid input")
             print("You have faced an error!\nMissign argument or Invalid input")
+
+
+
+    def choose_lesson_to_see_student_list(self, lesson):
+        """"
+        check which students have chosen the same lesson 
+        param : lesson
+        inner def : first check this lesson if available 
+        print students' names
+        """  
+        def check_lesson(lesson):
+            read = HandleFile('lesson_info.csv').read_file()
+            for row in read:
+                if row['lesson_name'] == lesson:
+                    return True
+        if check_lesson(lesson):
+            read = HandleFile('chosen_lesson.csv').read_file()
+            list_students_having_same_lesson=[row['student_name'] for row in read if lesson in ast.literal_eval(row['lessons'])]
+            print("  student name  ")
+            print('*' * 18)
+            for i in list_students_having_same_lesson:
+                print(i)
+        else:
+            print('This lesson is not available!')
