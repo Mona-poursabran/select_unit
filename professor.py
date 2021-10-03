@@ -18,3 +18,6 @@ class Professor(Student):
         super().__init__(user_type, username, password, fname, lname)
 
 
+    def search_lesson(self, lesson):
+        return super().search_lesson(lesson)
+ 
