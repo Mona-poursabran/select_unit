@@ -84,3 +84,15 @@ class Professor(Student):
         read = HandleFile('chosen_course_pro.csv')
         read.append_info(self.chosen_courses)
 
+
+    def show_chosen_course(self):
+        """ see chosen courses
+            print the table to see chosen courses
+        """
+        read = HandleFile('chosen_course_pro.csv').read_file()
+        t = PrettyTable(['lesson_name','Professor','units','capacity','remain_cap','code_lesson'])
+        for row in read :
+            if self.lname == row['Professor']:
+                t.add_row([row['lesson_name'], row['Professor'], row['units'], row['capacity'],
+                            row['remain_cap'], row['code_lesson']])
+        print(t)
