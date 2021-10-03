@@ -101,5 +101,10 @@ class Student (User):
                 break    
         else :
             print('No lessons have been chosen yet!')
+        
+
+    def save_chosen_lesson(self):
+        save = HandleFile('chosen_lesson.csv')
+        save.append_info(self.chosen_lesson_info)
 
 
