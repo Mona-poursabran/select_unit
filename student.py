@@ -58,7 +58,7 @@ class Student (User):
         self.userid = str(f'{datetime.now().year}{random.randint(1, 100)}{datetime.now().second}{self.fname[2]}')
         return self.userid
         
-        
+
     def chosen_lesson(self,code_lesson):
         """
         param: code_lesson
@@ -83,6 +83,23 @@ class Student (User):
                                 'id':[row['userid'] for row in read_user_info if row['lname'] == self.lname],'code_lesson':[dic['code_lesson'] for dic in self.chosen_lessons]}
         return self.chosen_lesson_info
 
-
+    def show_chosen_lesson_file(self):
+        """
+        if the student chose lessons before   
+        """
+        read = HandleFile('chosen_lesson.csv').read_file()
+        for row in read :
+            if row['student_name'] == self.fname + " " + self.lname :
+                t = PrettyTable(['lesson', 'pro','unit', 'code'])
+                lessons = [ast.literal_eval(row['lessons'])]
+                professor= [ast.literal_eval(row['professor'])]
+                unit = [ast.literal_eval(row['units'])]
+                code = [ast.literal_eval(row['code_lesson'])]
+                for i in range(len(lessons[0])):
+                    t.add_row([lessons[0][i], professor[0][i], unit[0][i], code[0][i]])
+                print(t) 
+                break    
+        else :
+            print('No lessons have been chosen yet!')
 
 
