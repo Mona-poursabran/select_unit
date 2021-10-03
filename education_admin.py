@@ -76,3 +76,15 @@ class EducationAdmin(Student):
                 print(i)
         else:
             print('This lesson is not available!')
+
+
+    def list_students(self):
+        """
+        show students' name and their ID
+        """
+        read = HandleFile('user_info.csv').read_file()
+        list_students = [(row['username'], row['userid']) for row in read if row['usertype'] == 'student']
+        mytable= PrettyTable()
+        mytable.field_names =["Student name","StudentID"]
+        mytable.add_rows(list_students)
+        print(mytable)
