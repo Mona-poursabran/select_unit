@@ -57,6 +57,31 @@ class Student (User):
     def studen_ID(self): 
         self.userid = str(f'{datetime.now().year}{random.randint(1, 100)}{datetime.now().second}{self.fname[2]}')
         return self.userid
+        
+        
+    def chosen_lesson(self,code_lesson):
+        """
+        param: code_lesson
+        in this method student can chose a lesson 
+        first add chosen lessons in self.chosen_lesson
+        then return one dictionary in order to save in a file 
+        """
+        
+        read_file = HandleFile('lesson_info.csv')
+        read = read_file.read_file()
+        for row in read:
+            if row['code_lesson'] == code_lesson and int(row['remain_cap']) > 0 :
+                self.chosen_lessons.append(row)
+                self.total_units += int(row['units'])
+                row['remain_cap'] = int(row['remain_cap']) - 1
+            
+            read_file.write_info(read)
+
+        read_user_info = HandleFile('user_info.csv').read_file()
+        self.chosen_lesson_info= {'student_name':self.fname+" "+self.lname, 'lessons':[dic['lesson_name'] for dic in self.chosen_lessons],
+                                'professor':[row['Professor'] for row in self.chosen_lessons],'units':[row['units'] for row in self.chosen_lessons],
+                                'id':[row['userid'] for row in read_user_info if row['lname'] == self.lname],'code_lesson':[dic['code_lesson'] for dic in self.chosen_lessons]}
+        return self.chosen_lesson_info
 
 
 
