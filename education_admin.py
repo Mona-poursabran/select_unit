@@ -107,6 +107,7 @@ class EducationAdmin(Student):
             mytable.add_rows(list_chosen_student)
             print(mytable)
 
+
     def choose_student_and_see_chosen_lessons(self, studentid):
         """
         choose one student and check chosen lessons
@@ -114,6 +115,7 @@ class EducationAdmin(Student):
         inner func : first check if this student is available
         Finally check if student has choosen any lessons
         """
+        list_student_chosen_lesson=[]
         def check_student(studentid):
             read = HandleFile('user_info.csv').read_file()
             for row in read:
@@ -128,8 +130,8 @@ class EducationAdmin(Student):
                     string_lesson = ''
                     for lesson in ast.literal_eval(row['lessons']):
                         string_lesson += lesson + "  "
-                    list_student_chosen_lesson = [(row['student_name'], string_lesson, sum(units))]
-
+                    list_student_chosen_lesson .append((row['student_name'], string_lesson, sum(units)))
+    
             mytable= PrettyTable()
             mytable.field_names =["student_name","lessons", "units"]
             if not list_student_chosen_lesson :
@@ -139,3 +141,4 @@ class EducationAdmin(Student):
                 print(mytable) 
         else:
             print('This student is not available')
+
