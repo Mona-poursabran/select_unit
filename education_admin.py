@@ -88,3 +88,21 @@ class EducationAdmin(Student):
         mytable.field_names =["Student name","StudentID"]
         mytable.add_rows(list_students)
         print(mytable)
+
+    
+    def search_students(self, student_name, student_id):
+        """
+        search students by using their fname and student id
+        logging : if the student can't be found 
+        show the table which includes students info 
+        """        
+        read = HandleFile('user_info.csv').read_file()
+        list_chosen_student =[(row['fname'], row['lname'], row['userid']) for row in read if row['usertype'] == 'student' 
+                                    if row['fname'] == student_name and row['userid'] == student_id]
+        mytable= PrettyTable()
+        mytable.field_names =["First name","Last name","Student ID"]
+        if not list_chosen_student:
+            print(f"{student_name} is not found!")
+        else:
+            mytable.add_rows(list_chosen_student)
+            print(mytable)
