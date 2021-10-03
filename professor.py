@@ -78,3 +78,9 @@ class Professor(Student):
             return self.chosen_courses             
         else :
             print('Perhapse this lesson code is not available\nor has been chosen by another professor')
+
+
+    def save_chosen_course(self):
+        read = HandleFile('chosen_course_pro.csv')
+        read.append_info(self.chosen_courses)
+
