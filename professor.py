@@ -21,3 +21,13 @@ class Professor(Student):
     def search_lesson(self, lesson):
         return super().search_lesson(lesson)
  
+
+    def see_all_lesson(self):
+        """"
+        As it is written in the project 
+        professor is supposed to see list of lessons
+        with their units
+        """ 
+        with open('lesson_info.csv', 'r') as f:
+            mytable = from_csv(f)
+        print(mytable.get_string(fields=["lesson_name", "units"]))
