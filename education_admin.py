@@ -144,6 +144,15 @@ class EducationAdmin(Student):
 
 
     def accept_reject_units(self,lname, studentid):
+        """
+        params: student last name and student ID
+        first find the student from user info according to the lname and id
+        second create an student object in order to see chosen lessons
+        third edu admin chose the lesson code as accepted or rejected lessons
+        fourth check if each lesson is rejected one is added to remain capacity 
+        finally create a dic
+        return dic 
+        """
         file_chosen_lesson = HandleFile('chosen_lesson.csv').read_file()
         file_lesson_info = HandleFile('lesson_info.csv')
         accepted_lessons = []
@@ -179,7 +188,9 @@ class EducationAdmin(Student):
         self.dic = {'name':student.fname+" "+student.lname, 'accepted_units':accepted_units, 'rejected_units': rejected_units}  
         return self.dic
 
+
     def save_accept_reject(self):
+        """ save dic which includes student name , accepted lessons and rejected ones"""
         file = HandleFile('accept_reject.csv')
         file.append_info([self.dic])
 
