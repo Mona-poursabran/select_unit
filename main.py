@@ -28,7 +28,7 @@ while num != 3 :
                 username = input("username: ").title().strip()
                 print( "YOUR password should have at least one number.\n"
                             "It should have at least one special symbol.\n"
-                            "It should be between 6 to 10 characters long.\n")
+                            "It should be between 6 to 20 characters long.\n")
                 password = input("password: ")
                 confirm = input("confirm your password: ")
                 fname = input("First name: ").title().strip()
@@ -70,7 +70,7 @@ while num != 3 :
                 student= Student(user.role, username, password, user.fname, user.lname)
                 access_student()
                 choice = int(input("choose a number to access to each part: "))
-                while choice != 6 :
+                while choice != 7 :
                     if choice == 1:
                         student.see_all_lessons()
 
@@ -100,7 +100,9 @@ while num != 3 :
                                     break
                         student.save_chosen_lesson()
                     elif choice == 5 :
-                        student.show_chosen_lesson_file()     
+                        student.show_chosen_lesson_file() 
+                    elif choice == 6 :
+                        student.see_accepted_rejected_units()
                     access_student()
                     choice = int(input("choose a number to access to each part: ")) 
                     # os.system('cls') 
@@ -111,7 +113,7 @@ while num != 3 :
                 edu_admin = EducationAdmin(user.role, username, password, user.fname, user.lname)
                 access_edu_admin()
                 choice = int(input("choose a number to access to each part: "))
-                while choice != 9:
+                while choice != 10:
                     if choice == 1:
                         edu_admin.see_all_lessons()
 
@@ -143,6 +145,11 @@ while num != 3 :
                     elif choice == 8 :
                         studentid = input('studentID: ')
                         edu_admin.choose_student_and_see_chosen_lessons(studentid)
+                    elif choice == 9 :
+                        studnet_lastname = input("Student's last name: ").title().strip()
+                        student_ID = input('StudentID: ')
+                        edu_admin.accept_reject_units(studnet_lastname, student_ID)
+                        edu_admin.save_accept_reject()
                     access_edu_admin()
                     choice = int(input("choose a number to access to each part: ")) 
                     # os.system('cls') 
