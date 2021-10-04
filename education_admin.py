@@ -143,9 +143,11 @@ class EducationAdmin(Student):
             print('This student is not available')
 
 
-    def accept_units(self,lname, studentid):
+    def accept_reject_units(self,lname, studentid):
         file_chosen_lesson = HandleFile('chosen_lesson.csv').read_file()
+        file_lesson_info = HandleFile('lesson_info.csv')
         accepted_lessons = []
+        rejected_lessons = []
         read=HandleFile('user_info.csv').read_file()
         for row in read:
             if row['lname'] == lname and row['userid'] == studentid:
@@ -155,11 +157,29 @@ class EducationAdmin(Student):
                 while code != 'q':
                     code = input('accepted code or q: ')
                     accepted_lessons.append(code)
+                code =''   
+                while code != 'q':
+                    code = input('rejected code or q: ')
+                    rejected_lessons.append(code)
+        
                 break
         else :
-            print("This student is not availble!")       
-        self.resutl_accepted_units=[(code_lesson, student.fname+" "+student.lname) for row in file_chosen_lesson 
+            print("This student is not availble!") 
+        read_lesson_info = file_lesson_info.read_file()
+        for row in read_lesson_info:
+            for code_lesson in rejected_lessons:
+                if code_lesson in row['code_lesson']:
+                    row['remain_cap'] = int(row['remain_cap']) + 1
+            file_lesson_info.write_info(read_lesson_info)
+              
+        accepted_units=[code_lesson for row in file_chosen_lesson 
                                     for code_lesson in accepted_lessons if code_lesson in row['code_lesson']]
-        return  self.resutl_accepted_units
+        rejected_units = [code_lesson for row in file_chosen_lesson 
+                        for code_lesson in rejected_lessons if code_lesson in row['code_lesson']]
+        self.dic = {'name':student.fname+" "+student.lname, 'accepted_units':accepted_units, 'rejected_units': rejected_units}  
+        return self.dic
 
+    def save_accept_reject(self):
+        file = HandleFile('accept_reject.csv')
+        file.append_info([self.dic])
 
