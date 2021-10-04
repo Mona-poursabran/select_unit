@@ -142,3 +142,24 @@ class EducationAdmin(Student):
         else:
             print('This student is not available')
 
+
+    def accept_units(self,lname, studentid):
+        file_chosen_lesson = HandleFile('chosen_lesson.csv').read_file()
+        accepted_lessons = []
+        read=HandleFile('user_info.csv').read_file()
+        for row in read:
+            if row['lname'] == lname and row['userid'] == studentid:
+                student= Student(row['usertype'], row['username'],'abc_10', row['fname'], row['lname'])
+                student.show_chosen_lesson_file()
+                code=''
+                while code != 'q':
+                    code = input('accepted code or q: ')
+                    accepted_lessons.append(code)
+                break
+        else :
+            print("This student is not availble!")       
+        self.resutl_accepted_units=[(code_lesson, student.fname+" "+student.lname) for row in file_chosen_lesson 
+                                    for code_lesson in accepted_lessons if code_lesson in row['code_lesson']]
+        return  self.resutl_accepted_units
+
+
