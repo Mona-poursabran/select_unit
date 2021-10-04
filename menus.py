@@ -13,7 +13,8 @@ Access Menu:
 [3] - Show total units
 [4] - Choose lesson
 [5] - Show chosen lessons
-[6] - Log out''')
+[6] - Show accepted and rejected units
+[7] - Log out''')
 
 
 def access_edu_admin():
@@ -27,7 +28,8 @@ Access Menu:
 [6] - List students
 [7] - Search students
 [8] - Choose student and show chosen lesson
-[9] - Log out''')
+[9] - Accept and Reject units
+[10] - Log out''')
 
 def access_pro():
         print('''
