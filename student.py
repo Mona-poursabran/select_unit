@@ -108,3 +108,14 @@ class Student (User):
         save.append_info(self.chosen_lesson_info)
 
 
+    def see_accepted_rejected_units(self):
+        read= HandleFile('accept_reject.csv').read_file()
+        for row in read :
+            if self.fname+" "+self.lname == row['name']:
+                table = PrettyTable(field_names=['student name', 'accepted units', 'rejected units'])
+                table.add_row([row['name'], row['accepted_units'], row['rejected_units']])
+                print(table)
+                break
+        else:
+            print('It has not checked yet!')
+
