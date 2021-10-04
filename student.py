@@ -9,7 +9,8 @@ class Student (User):
     """
     Student class is a child class of User class to check some validation
     Attributes : usertype, username, password, fname, lname, chosen_lesson and total_units
-    Methods : see_all_lessons, search lesson, show_total_units , chosen_lessons
+    Methods : see_all_lessons, search lesson, show_total_units , chosen_lessons, save chosen lesson, 
+            check accepted and rejected units 
     """
     chosen_lessons = []
     total_units = 0
@@ -82,6 +83,7 @@ class Student (User):
                                 'professor':[row['Professor'] for row in self.chosen_lessons],'units':[row['units'] for row in self.chosen_lessons],
                                 'id':[row['userid'] for row in read_user_info if row['lname'] == self.lname],'code_lesson':[dic['code_lesson'] for dic in self.chosen_lessons]}
         return self.chosen_lesson_info
+
 
     def show_chosen_lesson_file(self):
         """
