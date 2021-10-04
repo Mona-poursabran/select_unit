@@ -83,9 +83,21 @@ while num != 3 :
 
                     elif choice == 4:
                         student.see_all_lessons()
+                        print("Dear student you are supposed to choose 10 to 20 units:")
                         while student.total_units < 10:
                             code_lesson = input("code: ")
                             student.chosen_lesson(code_lesson)
+                            if student.total_units >=10:
+                                choose_unit=  input(f"You've got {student.total_units} units.\nDo you want to add more lessons?(y/n)")
+                                if choose_unit =='y':
+                                   while student.total_units < 20:
+                                        code_lesson = input("Enter lesson code or q: ")
+                                        if code_lesson == 'q':
+                                           break
+                                        else:
+                                            student.chosen_lesson(code_lesson)
+                                elif choose_unit == 'n' :
+                                    break
                         student.save_chosen_lesson()
                     elif choice == 5 :
                         student.show_chosen_lesson_file()     
@@ -148,9 +160,22 @@ while num != 3 :
                         pro.search_lesson(lesson)
                     elif choice == 3:
                         pro.see_all_lessons()
-                        while pro.total_units < 5 :
+                        print("Dear Professor,\nYou are supposed to choose 10 to 15 units:")
+                        while pro.total_units < 10 :    
                             code = input("Code lesson: ").strip()
                             pro.chosen_course(code)
+                            if pro.total_units >=10:
+                                choose_units = input(f"You've got {pro.total_units} units.\nDo you want to add more?y/n ")
+                                if choose_units == 'y':
+                                    code = input("Enter lesson code or q: ")
+                                    if code == 'q':
+                                        break
+                                    else:
+                                        pro.chosen_course(code)
+
+
+                                elif choose_units =='n':
+                                    break
                         pro.save_chosen_course()
                     elif choice == 4 :
                         pro.show_chosen_course()
